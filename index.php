@@ -17,7 +17,7 @@
  */
 ?>
 
-<form action="index.php" method="post" enctype="multipart/form-data">
+<form action="fichier.php" method="post" enctype="multipart/form-data">
     <label for="id-fichier">Select your image (png, jpg)<br>
 
         <input type="file" name="fichierUtilisateur" id="id-fichier">(max 3Mo)<br>
@@ -25,3 +25,19 @@
     </label>
 </form>
 
+<?php
+if ( isset($_GET['sucess']) ){
+    echo $_GET['sucess'];
+}
+
+if ( isset($_GET['sobig']) ){
+    echo $_GET['sobig'];
+}
+
+if ( isset($_GET['notimage']) ){
+    echo $_GET['notimage'];
+}
+
+if ( isset($_GET['error']) ){
+    echo $_GET['error'];
+}

@@ -21,20 +21,22 @@ if (isset ($_FILES['fichierUtilisateur']) && $_FILES['fichierUtilisateur']['erro
         if ( (int)$_FILES['fichierUtilisateur']['size'] <= $maxSize ) {
             // Temp name file
             $tmp_name = $_FILES['fichierUtilisateur']['tmp_name'];
-            // Check real name file
-            $name = $_FILES['fichierUtilisateur']['name'];
-            //Move file
-            move_uploaded_file($tmp_name, $name);
+            //Move file and rename it ( Day M Year . Hours I Seconds )
+            move_uploaded_file($tmp_name, './upload/'. date("mdY.His"));
 
-            echo $sucessMsg;
+            header('Location: index.php?sucess='.$sucessMsg);
+            exit();
         } else {
 
-            echo $bigMsg;
+            header('Location: index.php?sobig='.$bigMsg);
+            exit();
         }
     } else {
-        echo $notImageMsg;
+        header('Location: index.php?notimage='.$notImageMsg);
+        exit();
     }
 
 } else {
-    echo $errorMsg;
+    header('Location: index.php?error='.$errorMsg);
+    exit();
 }
